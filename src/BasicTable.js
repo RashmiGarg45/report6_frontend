@@ -1,5 +1,5 @@
 import React, {useMemo} from "react";
-import {useTable} from 'react-table'
+import {useTable, useSortBy} from 'react-table'
 import {COLUMNS} from './columns_table'
 import './table.css'
 
@@ -16,7 +16,9 @@ const data = useMemo(() => resp_data, [resp_data]);
 const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data,
-});
+},
+useSortBy
+);
 
     return (
         <table {...getTableProps()}>
@@ -26,8 +28,11 @@ const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = use
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {
                                 headerGroup.headers.map(column => (
-                                    <th {...column.getHeaderProps()}>
+                                    <th {...column.getHeaderProps(column.getSortByToggleProps() )}>
                                         {column.render("Header")}
+                                        <span>
+                                            {column.isSorted ? (column.isSortedDesc ? '⬇' : '⬆') : ''}
+                                        </span>
                                     </th>
                                 ))
                             }
