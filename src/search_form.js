@@ -12,6 +12,7 @@ class FormComponent extends Component {
             endDate: '',
             showAverage: false,
             showTotal: false,
+            show100Revenue: true,
             showI1 : true,
             showI2 : true,
             showTR : true,
@@ -41,6 +42,7 @@ class FormComponent extends Component {
             endDate: this.state.endDate,
             showAverage: this.state.showAverage,
             showTotal: this.state.showTotal,
+            show100Revenue : this.state.show100Revenue,
             showI1: this.state.showI1,
             showI2: this.state.showI2,
             showTR: this.state.showTR,
@@ -118,6 +120,15 @@ class FormComponent extends Component {
                         id="showTotal"
                         name="showTotal"
                         checked={this.state.showTotal}
+                        onChange={this.handleInputChange}
+                    />
+                    
+                    <label htmlFor="show100Revenue">100%Revenue:</label>
+                    <input
+                        type="checkbox"
+                        id="show100Revenue"
+                        name="show100Revenue"
+                        checked={this.state.show100Revenue}
                         onChange={this.handleInputChange}
                     />
                     <label htmlFor="showI1">I1:</label>
